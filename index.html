@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>js game</title>
+</head>
+<body>
+    <div id="main_container">
+        <h1>Enjoy the game</h1>
+        <div class="player">
+            <div class="player_health">
+                <p id="player1">Player</p>
+                <progress id="player_health_status"></progress>
+                <div class="health_msg playerHp"><p id="playerHp" style="color: black;">500/500Hp</p></div>
+            </div>
+       
+            <div class="robort_health">
+                <p id="player2">Robot</p>
+                <progress id="robot_health_status" ></progress>
+                <div class="health_msg robotHp"><p id="robotHp" style="color: black;">500/500Hp</p></div>
+            </div>
+         </div>                             
+            <p id="str-msg"></p>
+            <div id="btn_wrapper">
+             <button  class="btn str-btn" >start</button>
+             <button class="btn att-btn" style="display: none;">Attack</button>
+             <button class="btn re-btn" style="display: none;">reset</button>
+            </div>
+        
+
+            <div id="message">
+              <p id="draw"> </p> 
+              <p id="player"> </p> 
+              <p id="robot"> </p>
+              <p id="msg"> </p>
+            </div>
+
+       
+   
+    </div>
+  <script src="script.js"></script>  
+</body>
+</html>
