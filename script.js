@@ -12,16 +12,16 @@ const reset = document.getElementsByClassName("re-btn")[0];
 let playerHealth = document.getElementById("player_health_status").value;
 //console.log(playerHealth);
 let robotHealth = document.getElementById("robot_health_status").value;
-let playerInitialMoment = 30;
-let robotInitialMoment = 570;
+let playerInitialMovement = 30;
+let robotInitialMovement = 570;
 
 //event done by clicking start button
 function clickedStart() {
   if (attack.style.display == "none") {
     attack.style.display = "block";
     start.style.display = "none";
-    playerInitialMoment = 30;
-    robotInitialMoment = 570;
+    playerInitialMovement = 30;
+    robotInitialMovement = 570;
   }
 }
 start.addEventListener("click", clickedStart);
@@ -84,10 +84,10 @@ function handleAttack() {
          document.getElementById("msg").innerHTML = "";
    } 
   //  else if(currentPlayerHp == 0 || currentRobotHp == 0){
-  //   playerInitialMoment= 50;
-  //   robotInitialMoment= 500;
-  //  document.getElementsByClassName("playerMoment")[0].style.marginLeft = "50px";
-  //    document.getElementsByClassName("robotMoment")[0].style.marginLeft = "500px";
+  //   playerInitialMovement= 50;
+  //   robotInitialMovement= 500;
+  //  document.getElementsByClassName("playerMovement")[0].style.marginLeft = "50px";
+  //    document.getElementsByClassName("robotMovement")[0].style.marginLeft = "500px";
   //   }
    // Display message in every  attack button click.
    if(currentPlayerHp && currentRobotHp !== 0){
@@ -96,26 +96,26 @@ function handleAttack() {
     node.appendChild(messageAfterClick);
 
     const messageLog = document.getElementById("msg");
-    messageLog.insertBefore(node,messageLog.firstChild)
+    messageLog.insertBefore(node, messageLog.firstChild);
     // document.getElementById("msg").firstChild = node;
     // console.log(node);
    }else if(currentPlayerHp || currentRobotHp == 0){
     document.getElementById("msg").append(node)="";
    }
 
-   //track moment of players accoding to Hp
+   //track Movement of players accoding to Hp
   
-   let playerFinalMoment = (playerInitialMoment + (playerDamage-10));
-   playerInitialMoment = playerFinalMoment;
+   let playerFinalMovement = (playerInitialMovement + (playerDamage - 5));
+   playerInitialMovement = playerFinalMovement;
 
-   let robotFinalMoment = Math.abs(robotInitialMoment - (robotDamage+30));
-   robotInitialMoment = robotFinalMoment;
+   let robotFinalMovement = Math.abs(robotInitialMovement - (robotDamage + 15));
+   robotInitialMovement = robotFinalMovement;
 
-   document.getElementsByClassName("playerMoment")[0].style.marginLeft = playerInitialMoment + "px";
-   document.getElementsByClassName("robotMoment")[0].style.marginLeft = robotInitialMoment + "px";
-   //console.log(playerInitialMoment);
+   document.getElementsByClassName("playerMovement")[0].style.marginLeft = playerInitialMovement + "px";
+   document.getElementsByClassName("robotMovement")[0].style.marginLeft = robotInitialMovement + "px";
+   //console.log(playerInitialMovement);
 
-   //console.log(robotInitialMoment);
+   //console.log(robotInitialMovement);
   //function end.
   }
   //reset button
@@ -136,8 +136,8 @@ function handleAttack() {
     // reset log
     document.getElementById("msg").textContent = "";
     //initial position of players
-    document.getElementsByClassName("playerMoment")[0].style.marginLeft = "30px";
-    document.getElementsByClassName("robotMoment")[0].style.marginLeft = "570px";
+    document.getElementsByClassName("playerMovement")[0].style.marginLeft = "30px";
+    document.getElementsByClassName("robotMovement")[0].style.marginLeft = "570px";
 
 
     // document.getElementById("message").innerHTML = "";
