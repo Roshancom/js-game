@@ -46,6 +46,7 @@ function handleAttack() {
 
    
     const playerDamage = Math.ceil((Math.random() * 100)/ 2);
+    
 
     if(playerDamage >= 500){
         return false;
