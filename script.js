@@ -1,4 +1,5 @@
-const maxHealth = {
+"use strict";
+ const maxHealth = {
   player: 500,
   robot: 500,
 };
@@ -11,12 +12,16 @@ const reset = document.getElementsByClassName("re-btn")[0];
 let playerHealth = document.getElementById("player_health_status").value;
 //console.log(playerHealth);
 let robotHealth = document.getElementById("robot_health_status").value;
+let playerInitialMoment = 30;
+let robotInitialMoment = 570;
 
 //event done by clicking start button
 function clickedStart() {
   if (attack.style.display == "none") {
     attack.style.display = "block";
     start.style.display = "none";
+    playerInitialMoment = 30;
+    robotInitialMoment = 570;
   }
 }
 start.addEventListener("click", clickedStart);
@@ -70,25 +75,48 @@ function handleAttack() {
     } else if(currentPlayerHp ==0){
         attack.style.display = "none";
         reset.style.display = "block";
-        document.getElementById("player").innerText = "Player won";
+        document.getElementById("player").innerText = "robot won";
          document.getElementById("msg").innerHTML = "";
     }else if(currentRobotHp==0){
         attack.style.display = "none";
         reset.style.display = "block";
-        document.getElementById("robot").innerText = "robot won";
+        document.getElementById("robot").innerText = "player won";
          document.getElementById("msg").innerHTML = "";
-   }  
+   } 
+  //  else if(currentPlayerHp == 0 || currentRobotHp == 0){
+  //   playerInitialMoment= 50;
+  //   robotInitialMoment= 500;
+  //  document.getElementsByClassName("playerMoment")[0].style.marginLeft = "50px";
+  //    document.getElementsByClassName("robotMoment")[0].style.marginLeft = "500px";
+  //   }
    // Display message in every  attack button click.
    if(currentPlayerHp && currentRobotHp !== 0){
-   const node = document.createElement("li")
+   let node = document.createElement("li")
     const messageAfterClick = document.createTextNode(`Player Damage :${playerDamage} and Robot Damage :${robotDamage}`);
     node.appendChild(messageAfterClick);
-    document.getElementById("msg").appendChild(node);
-   }else if(currentPlayerHp || currentRobotHp == 0){
-    document.getElementById("msg").appendChild(node)="";
-   }
-    
 
+    const messageLog = document.getElementById("msg");
+    messageLog.insertBefore(node,messageLog.firstChild)
+    // document.getElementById("msg").firstChild = node;
+    // console.log(node);
+   }else if(currentPlayerHp || currentRobotHp == 0){
+    document.getElementById("msg").append(node)="";
+   }
+
+   //track moment of players accoding to Hp
+  
+   let playerFinalMoment = (playerInitialMoment + (playerDamage-10));
+   playerInitialMoment = playerFinalMoment;
+
+   let robotFinalMoment = Math.abs(robotInitialMoment - (robotDamage+30));
+   robotInitialMoment = robotFinalMoment;
+
+   document.getElementsByClassName("playerMoment")[0].style.marginLeft = playerInitialMoment + "px";
+   document.getElementsByClassName("robotMoment")[0].style.marginLeft = robotInitialMoment + "px";
+   //console.log(playerInitialMoment);
+
+   //console.log(robotInitialMoment);
+  //function end.
   }
   //reset button
   function resetButton(){
@@ -107,6 +135,9 @@ function handleAttack() {
     document.getElementById("robotHp").innerHTML = `500/500Hp`;
     // reset log
     document.getElementById("msg").textContent = "";
+    //initial position of players
+    document.getElementsByClassName("playerMoment")[0].style.marginLeft = "30px";
+    document.getElementsByClassName("robotMoment")[0].style.marginLeft = "570px";
 
 
     // document.getElementById("message").innerHTML = "";

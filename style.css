@@ -8,7 +8,7 @@ body{
 #main_container{
     margin: auto;
     margin-top: 40px;
-    width: 800px;
+    width: 850px;
     height: 800px;
     border: 3px solid rgb(97, 97, 100);
     padding: 10px;
@@ -71,7 +71,7 @@ h1{
 #btn_wrapper{
 text-align: center;
 display: flex;
-margin-top: 100px;
+margin-top: 20px;
 }
 .btn{
     background-color: #4CAF50;
@@ -89,7 +89,7 @@ margin-top: 100px;
 } 
 #message{
     height: 500px;
-    width: 400px;
+    width: 500px;
     background-color: rgb(39, 45, 48);
     border-radius: 10px;
     margin:0 auto;
@@ -112,9 +112,29 @@ margin-top: 100px;
 
 }
 .playerHp{
+ 
     float: right;
 }
 .robotHp{
+ 
     float: left;
 }
+#battle{
+    display: flex;
+   
+}
 
+img{
+    margin-top:10px;
+    width: 110px;
+    height: 80px;
+}
+#player2{
+    margin-left: 90px;
+}
+.robotHp p{
+    margin-left: 7px;
+}
+.playerHp p{
+    margin-left: 7px;
+}
